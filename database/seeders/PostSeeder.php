@@ -15,11 +15,13 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        $profile = Profile::first(); // Берем первый профиль из базы
+     //   $profile = Profile::first(); // Берем первый профиль из базы
 
-        Post::factory()
-            ->count(5) // Создаем 5 постов
-            ->create() // Сначала создаем посты
-            ->each(fn ($post) => $post->profiles()->attach($profile->id));
+     //   Post::factory()
+     //       ->count(5) // Создаем 5 постов
+      //      ->create() // Сначала создаем посты
+       //     ->each(fn ($post) => $post->profiles()->attach($profile->id));
+
+      Post::factory()->has(Profile::factory())->create();
     }
 }

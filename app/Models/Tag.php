@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Tag extends Model
 {
     use HasFactory;
+    
     public function posts(): BelongsToMany
     {
         return $this->belongsToMany(Post::class);
