@@ -23,9 +23,12 @@ class CommentFactory extends Factory
             'content' => fake()->realTextBetween(60, 255),
             'author' => fake()->name(),
             'likes'=>fake()->numberBetween(10, 1000),
-            'post_id' => Post::inRandomOrder()->first()->id,
+         //   'post_id' => Post::inRandomOrder()->first()->id,
             'profile_id' => Profile::inRandomOrder()->first()->id,
-            'user_id' => User::first()->id
+            'user_id' => User::first()->id,
+
+            'commentable_id' => Post::inRandomOrder()->first()->id,
+            'commentable_type' => Post::class,
         ];
     }
 }

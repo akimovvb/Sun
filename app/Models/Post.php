@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Post extends Model
 {
@@ -34,11 +35,16 @@ class Post extends Model
 
     }
 
-    public function comments(): HasMany
+    public function comments(): MorphMany 
     {
-      return $this->hasMany(Comment::class);
+      return $this->morphMany(Comment::class, 'commentable');
     }
 
+    public function image()
+    
+    {
+      return $this->morphOne(Image::class, 'imageable');
+    }
     
    
 
