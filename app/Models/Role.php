@@ -12,5 +12,12 @@ class Role extends Model
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
+
+    }
+
+    public function admins()
+    {   
+        return $this->belongsTo(Admin::class);
+
     }
 }
