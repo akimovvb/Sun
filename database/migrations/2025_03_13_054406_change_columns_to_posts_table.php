@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('admins', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained('users');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->string('name')->nullable()->change();
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('admins', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
+        Schema::table('posts', function (Blueprint $table) {
+            $table->text('name')->nullable()->change();
         });
     }
 };

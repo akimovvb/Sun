@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tags', function (Blueprint $table) {
-            $table->id();
-          
-            $table->timestamps();
+        Schema::table('roles', function (Blueprint $table) {
+            $table->string('title')->nullable();
+            $table->softDeletes();
+
         });
     }
 
@@ -23,6 +23,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tags');
+        Schema::table('roles', function (Blueprint $table) {
+            $table->dropColumn('title');
+            $table->dropSoftDeletes();
+        });
     }
 };

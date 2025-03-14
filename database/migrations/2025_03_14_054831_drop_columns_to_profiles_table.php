@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->text('title')->change();
+        Schema::table('profiles', function (Blueprint $table) {
+            $table->dropColumn('fake_columnN1');
+            $table->dropColumn('fake_columnN2');
         });
     }
 
@@ -21,8 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->string('title')->change();
+        Schema::table('profiles', function (Blueprint $table) {
+            $table->text('fake_columnN1')->nullable();
+            $table->text('fake_columnN2')->nullable();
         });
     }
 };

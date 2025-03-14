@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tags', function (Blueprint $table) {
-            $table->id();
-          
-            $table->timestamps();
+        Schema::table('comments', function (Blueprint $table) {
+            $table->dropColumn('fake_columnN1');
+            $table->dropColumn('fake_columnN2');
         });
     }
 
@@ -23,6 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tags');
+        Schema::table('comments', function (Blueprint $table) {
+            $table->text('fake_columnN1')->nullable();
+            $table->text('fake_columnN2')->nullable();
+        });
     }
 };

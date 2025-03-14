@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->string('count')->nullable();
-            $table->string('type')->nullable();
-            $table->string('author')->nullable();
+            
             $table->timestamps();
         });
     }

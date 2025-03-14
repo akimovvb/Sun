@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('admins', function (Blueprint $table) {
-            $table->index('name');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropColumn('extra_atributeN1');
+            $table->dropColumn('extra_atributeN2');
         });
     }
 
@@ -21,8 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('admins', function (Blueprint $table) {
-            $table->dropIndex('admins_name_index');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->text('extra_atributeN1')->nullable();
+            $table->text('extra_atributeN2')->nullable();
         });
     }
 };

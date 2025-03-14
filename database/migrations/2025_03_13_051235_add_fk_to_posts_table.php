@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('title')->nullable()->change();
+            $table->foreignId('profile_id')->nullable()->constrained('profiles');
+            $table->foreignId('category_id')->nullable()->constrained('categories');
         });
     }
 
@@ -22,7 +23,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('title')->nullable()->change();
+            $table->dropConstrainedForeignId('profile_id');
+            $table->dropConstrainedForeignId('category_id');
+            
         });
     }
 };

@@ -15,9 +15,5 @@ class Role extends Model
 
     }
 
-    public function admins()
-    {   
-        return $this->belongsTo(Admin::class);
-
-    }
+   
 }

@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('admins', function (Blueprint $table) {
-            $table->string('password')->nullable()->change();
+        Schema::table('posts', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('admins', function (Blueprint $table) {
-            $table->text('password')->nullable()->change();
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropSoftDeletes();
         });
     }
 };

@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('admins', function (Blueprint $table) {
-            $table->dropColumn('extra_columnN1');
-            $table->dropColumn('extra_columnN2');
+        Schema::table('comments', function (Blueprint $table) {
+            $table->text('content')->nullable()->change();
         });
     }
 
@@ -22,9 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('admins', function (Blueprint $table) {
-            $table->string('extra_columnN1');
-            $table->string('extra_columnN2');
+        Schema::table('comments', function (Blueprint $table) {
+            $table->string('content')->nullable()->change();
         });
     }
 };

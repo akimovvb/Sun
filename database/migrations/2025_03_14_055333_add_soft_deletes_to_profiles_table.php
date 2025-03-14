@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->index('title');
+        Schema::table('profiles', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->dropIndex('posts_title_index');
+        Schema::table('profiles', function (Blueprint $table) {
+            $table->dropSoftDeletes();
         });
     }
 };
